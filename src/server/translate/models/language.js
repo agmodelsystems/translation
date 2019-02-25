@@ -4,7 +4,7 @@ import User from './user'
 
 const Language = new Model({
 
-  tableName: 'translate_langauges',
+  tableName: 'translate_languages',
 
   rules: {
     name: 'required',
@@ -18,7 +18,7 @@ const Language = new Model({
   },
 
   users: function() {
-    return this.belongsToMany(User, 'users_languages', 'language_id', 'user_id')
+    return this.belongsToMany(User, 'translate_users_languages', 'language_id', 'user_id')
   }
 
 })

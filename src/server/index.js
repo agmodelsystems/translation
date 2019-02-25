@@ -1,4 +1,4 @@
-import './lib/environment'
+import './translate/lib/environment'
 import multiparty from 'connect-multiparty'
 import bodyParser from 'body-parser'
 import express from 'express'
@@ -15,7 +15,7 @@ server.use(bodyParser.json({ limit: '5mb' }))
 
 server.use(multiparty({ uploadDir: './tmp' }))
 
-router.use('/api/translate', translate)
+server.use('/api/translate', translate)
 
 server.listen(3000, () => {
   console.log('Listening at 3000')

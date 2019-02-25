@@ -10,8 +10,8 @@ exports.seed = async (knex, Promise) => {
       last_name: 'Kops',
       email: 'greg@thinktopography.com',
       username: 'mochini',
-      password_salt: '',
-      password_hash: '',
+      password_salt: '$2a$10$TaGBczo2HaQDe1Q4ZwFFbO',
+      password_hash: '$2a$10$TaGBczo2HaQDe1Q4ZwFFbO2YGhQJ.nqv7fLT7mNFuw2YDEMH3/uPa',
       created_at: moment(),
       updated_at: moment()
     },
@@ -20,8 +20,8 @@ exports.seed = async (knex, Promise) => {
       last_name: 'Wu',
       email: 'ziwei@agmodelsystems.com',
       username: 'vivian',
-      password_salt: '',
-      password_hash: '',
+      password_salt: '$2a$10$TaGBczo2HaQDe1Q4ZwFFbO',
+      password_hash: '$2a$10$TaGBczo2HaQDe1Q4ZwFFbO2YGhQJ.nqv7fLT7mNFuw2YDEMH3/uPa',
       created_at: moment(),
       updated_at: moment()
     },

@@ -34,6 +34,7 @@
     "shipit-deploy": "^4.1.4"
   },
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parse": "^0.1.0",
     "bookshelf": "^0.14.2",
     "checkit": "^0.7.0",

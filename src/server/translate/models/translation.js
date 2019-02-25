@@ -1,4 +1,7 @@
 import Model from './model'
+import Label from './label'
+import Language from './language'
+import User from './user'
 
 const Translation = new Model({
 
