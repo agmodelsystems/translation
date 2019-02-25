@@ -1,3 +1,4 @@
+import './lib/environment'
 import multiparty from 'connect-multiparty'
 import bodyParser from 'body-parser'
 import express from 'express'
