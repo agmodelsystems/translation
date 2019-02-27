@@ -5,7 +5,7 @@ import User from './user'
 
 const Translation = new Model({
 
-  tableName: 'translate_translations',
+  tableName: 'translations',
 
   rules: {
     text: 'required'

@@ -1,8 +1,8 @@
 exports.seed = async (knex, Promise) => {
 
-  await knex('translate_users_languages').del()
+  await knex('users_languages').del()
 
-  await knex('translate_users_languages').insert([
+  await knex('users_languages').insert([
     {
       user_id: 1,
       language_id: 1

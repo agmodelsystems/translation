@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt-nodejs'
 
 const User = new Model({
 
-  tableName: 'translate_users',
+  tableName: 'users',
 
   rules: {
     first_name: 'required',
@@ -37,7 +37,7 @@ const User = new Model({
   },
 
   languages: function() {
-    return this.belongsToMany(Language, 'translate_users_languages', 'user_id', 'language_id')
+    return this.belongsToMany(Language, 'users_languages', 'user_id', 'language_id')
   },
 
   translations: function() {

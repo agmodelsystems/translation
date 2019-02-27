@@ -2,9 +2,9 @@ const moment = require('moment')
 
 exports.seed = async (knex, Promise) => {
 
-  await knex('translate_users').del()
+  await knex('users').del()
 
-  await knex('translate_users').insert([
+  await knex('users').insert([
     {
       first_name: 'Greg',
       last_name: 'Kops',

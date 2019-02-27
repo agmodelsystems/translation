@@ -3,7 +3,7 @@ import Translation from './translation'
 
 const Label = new Model({
 
-  tableName: 'translate_labels',
+  tableName: 'labels',
 
   rules: {
     name: 'required'

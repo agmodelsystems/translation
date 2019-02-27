@@ -1,5 +1,5 @@
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('translate_languages', table => {
+  return knex.schema.createTable('languages', table => {
     table.increments('id').unsigned().primary()
     table.string('code')
     table.string('name')
@@ -8,5 +8,5 @@ exports.up = function(knex, Promise) {
 }
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTable('translate_languages')
+  return knex.schema.dropTable('languages')
 }

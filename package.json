@@ -37,6 +37,7 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parse": "^0.1.0",
     "bookshelf": "^0.14.2",
+    "chai": "^4.2.0",
     "checkit": "^0.7.0",
     "connect-multiparty": "^2.2.0",
     "cors": "^2.8.5",
