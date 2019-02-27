@@ -1,9 +1,9 @@
-import './translate/lib/environment'
+import './lib/environment'
 import multiparty from 'connect-multiparty'
 import bodyParser from 'body-parser'
 import express from 'express'
 import qs from 'qs'
-import translate from './translate/api'
+import api from './api'
 
 const server = express()
 
@@ -15,7 +15,7 @@ server.use(bodyParser.json({ limit: '5mb' }))
 
 server.use(multiparty({ uploadDir: './tmp' }))
 
-server.use('/api/translate', translate)
+server.use('/api', api)
 
 server.listen(3000, () => {
   console.log('Listening at 3000')

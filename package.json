@@ -1,7 +1,7 @@
 {
-  "name": "amtsapi",
+  "name": "translation",
   "version": "1.0.0",
-  "description": "Agmodel API Server",
+  "description": "Translation",
   "main": "index.js",
   "scripts": {
     "dev": "babel-node ./src/server/index.js",
