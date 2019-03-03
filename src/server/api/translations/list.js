@@ -1,8 +1,7 @@
 import Translation from '../../models/translation'
 import TranslationSerializer from '../../serializers/translation_serializer'
-import transaction from '../../utils/transaction'
 
-const route = transaction(async (req, res, trx) => {
+const route = async (req, res, trx) => {
 
   const translations = await Translation.where({
     language_id: req.params.language_id
@@ -14,6 +13,6 @@ const route = transaction(async (req, res, trx) => {
     data: translations.map(TranslationSerializer)
   })
 
-})
+}
 
 export default route

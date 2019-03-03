@@ -1,9 +1,19 @@
-import transaction from '../../utils/transaction'
+import LabelSerializer from '../../serializers/label_serializer'
+import Label from '../../models/label'
 
-const route = transaction(async (req, res, trx) => {
+const route = async (req, res, trx) => {
 
-  res.send('create a label')
+  const label = await Label.forge({
+    name: req.body.name,
+    description: req.body.description
+  }).save(null, {
+    transacting: req.trx
+  })
 
-})
+  res.status(200).json({
+    data: LabelSerializer(label)
+  })
+
+}
 
 export default route

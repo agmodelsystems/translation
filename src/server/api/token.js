@@ -1,20 +1,17 @@
-import APIError from '../utils/error'
 import { decode } from '../lib/jwt'
 import User from '../models/user'
 
-const route = async (req, res, next) => {
+const router = async (req, res, next) => {
 
   const token = req.headers.authorization
 
-  if(!token) throw new APIError({
-    code: 401,
+  if(!token) return res.status(401).json({
     message: 'No token'
   })
 
   const matches = token.match(/Bearer (.*)/)
 
-  if(!matches) throw new APIError({
-    code: 401,
+  if(!matches) return res.status(401).json({
     message: 'Invalid token'
   })
 
@@ -22,17 +19,18 @@ const route = async (req, res, next) => {
 
   const iat = Math.floor(Date.now() / 1000)
 
-  if(iat > exp) throw new APIError({
-    code: 401,
+  if(iat > exp) return res.status(401).json({
     message: 'Expired token'
   })
 
   const user = await User.where({
     id: user_id
-  }).fetch()
+  }).fetch({
+    transacting: req.trx,
+    withRelated: ['photo']
+  })
 
-  if(!user) throw new APIError({
-    code: 401,
+  if(!user) return res.status(401).json({
     message: 'Invalid user'
   })
 
@@ -42,4 +40,4 @@ const route = async (req, res, next) => {
 
 }
 
-export default route
+export default router

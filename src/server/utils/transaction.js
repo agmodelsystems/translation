@@ -1,36 +1,24 @@
+import onFinished from 'on-finished'
 import knex from '../lib/knex'
 
-const transaction = (handler) => async (req, res, next) => {
+const withTransaction = (req, res, next) => {
 
-  return knex.transaction(async trx => {
+  knex.transaction(trx => {
 
-    try {
+    req.trx = trx
 
-      await handler(req, res, trx, next)
-
-      await trx.commit()
-
-    } catch(err) {
-
-      await trx.rollback(err)
-
-      if(err.errors) {
-
-        return res.status(422).json({
-          message: 'Unable to save record',
-          errors: err.toJSON()
-        })
-
+    onFinished(res, function (err, res) {
+      if (err || (res.statusCode && res.statusCode >= 400)) {
+        trx.rollback()
+      } else {
+        trx.commit()
       }
+    })
 
-      res.status(500).json({
-        message: err.message
-      })
+    next()
 
-    }
-
-  }).catch(console.error)
+  }).catch(err => {})
 
 }
 
-export default transaction
+export default withTransaction

@@ -1,8 +1,7 @@
-import transaction from '../../utils/transaction'
 import { encode } from '../../lib/jwt'
 import User from '../../models/user'
 
-const route = transaction(async (req, res, trx) => {
+const route = async (req, res, trx) => {
 
   if(!req.body.username) throw new Error('username is required')
 
@@ -25,6 +24,6 @@ const route = transaction(async (req, res, trx) => {
   })
 
 
-})
+}
 
 export default route
