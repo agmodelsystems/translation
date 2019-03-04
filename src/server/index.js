@@ -1,6 +1,6 @@
 import './lib/environment'
 import 'express-async-errors'
-import withTransaction from './utils/transactions'
+import withTransaction from './utils/transaction'
 import multiparty from 'connect-multiparty'
 import bodyParser from 'body-parser'
 import express from 'express'
@@ -17,7 +17,9 @@ server.use(bodyParser.json({ limit: '5mb' }))
 
 server.use(multiparty({ uploadDir: './tmp' }))
 
-server.use('/api', withTransaction, api)
+server.use(withTransaction)
+
+server.use('/api', api)
 
 server.listen(3000, () => {
   console.log('Listening at 3000')
