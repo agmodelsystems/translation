@@ -1,6 +1,18 @@
+import Label from '../../models/label'
+
 const route = async (req, res, trx) => {
 
-  res.send('show a specific label')
+  const label = await Label.where({
+    id: req.params.id
+  }).fetchAll({
+    withRelated: ['translations']
+  })
+
+
+  res.status(200).json({
+    data: label
+  })
+
 
 }
 

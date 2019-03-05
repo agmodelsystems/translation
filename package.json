@@ -4,7 +4,7 @@
   "description": "Translation",
   "main": "index.js",
   "scripts": {
-    "dev": "babel-node ./src/scripts/dev.js",
+    "dev": "babel-node ./src/server/index.js",
     "reset": "knex migrate:rollback && knex migrate:latest && knex seed:run",
     "test": "babel-node ./src/scripts/test.js"
   },

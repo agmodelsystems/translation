@@ -1,6 +1,12 @@
+import Label from '../../models/label'
+
 const route = async (req, res, trx) => {
 
-  res.send('list all of the labels')
+  const labels = await Label.fetchAll()
+
+  res.status(200).json({
+    data: labels
+  })
 
 }
 

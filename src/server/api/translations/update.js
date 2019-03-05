@@ -1,6 +1,22 @@
+import TranslationSerializer from '../../serializers/translation_serializer'
+import Translation from '../../models/translation'
+
 const route = async (req, res, trx) => {
 
-  res.send('update a translation')
+  const translation = await Translation.where({
+    id: req.params.id
+  })
+  .save(
+    {text: req.body.text},
+    {
+      method: 'update',
+      transacting: req.trx
+    })
+
+
+  res.status(200).json({
+    data: TranslationSerializer(translation)
+  })
 
 }
 
