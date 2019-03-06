@@ -6,8 +6,7 @@ const route = async (req, res, trx) => {
   const label = await Label.where({
     id: req.params.id
   }).fetchAll({
-    transacting: req.trx,
-    withRelated: ['translations']
+    transacting: req.trx
   })
 
 

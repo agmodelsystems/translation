@@ -8,7 +8,10 @@ const Translation = new Model({
   tableName: 'translations',
 
   rules: {
-    text: 'required'
+    label_id: 'required',
+    language_id: 'required',
+    text: 'required',
+    user_id: 'required'
   },
 
   virtuals: {},
