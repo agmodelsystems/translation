@@ -1,24 +1,26 @@
 {
   "name": "translation",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Translation",
   "main": "index.js",
   "scripts": {
+    "build": "babel-node ./src/scripts/build.js",
+    "deploy": "shipit production deploy --shipitfile=./src/deploy/shipitfile.js",
     "dev": "babel-node ./src/scripts/dev.js",
     "reset": "knex migrate:rollback && knex migrate:latest && knex seed:run",
     "test": "babel-node ./src/scripts/test.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/agmodelsystems/amtsapi.git"
+    "url": "git+https://github.com/agmodelsystems/translation.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/agmodelsystems/amtsapi/issues"
+    "url": "https://github.com/agmodelsystems/translation/issues"
   },
-  "homepage": "https://github.com/agmodelsystems/amtsapi#readme",
+  "homepage": "https://github.com/agmodelsystems/translation#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
@@ -30,6 +32,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "eslint": "^5.1.0",
     "mocha": "^5.2.0",
+    "ncp": "^2.0.0",
     "shipit-cli": "^4.1.2",
     "shipit-deploy": "^4.1.4"
   },

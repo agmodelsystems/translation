@@ -26,6 +26,18 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm test
+  deploy:
+    executor: node-postgres
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - add_ssh_keys:
+          fingerprints:
+            - cf:11:71:16:68:bd:28:46:98:b6:36:af:e4:de:73:9e
+      - run: npm run deploy
 workflows:
   test-deploy:
     jobs:
@@ -33,5 +45,13 @@ workflows:
           filters:
             branches:
               only: /.*/
+            tags:
+              only: /.*/
+      - deploy:
+          requires:
+            - test
+          filters:
+            branches:
+              ignore: /.*/
             tags:
               only: /.*/

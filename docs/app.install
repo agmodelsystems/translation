@@ -64,20 +64,6 @@ service nginx start
 
 # SET UP DEPLOYMENT
 yum -y install git
-vi ~/.ssh/deploy
-chmod 600 ~/.ssh/deploy
+vi ~/.ssh/github
+chmod 600 ~/.ssh/github
 vi ~/.ssh/config
-
-# SET UP STORAGE
-mkdir /var/www
-umount /media/ephemeral0
-mount /dev/xvdb /var/www
-vi /etc/fstab
-
-# SET UP APP
-cd /var/www
-mkdir maha
-cd maha
-git clone git@github.com:mahaplatform/mahaplatform.com.git release
-cd release
-npm install
