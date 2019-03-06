@@ -4,13 +4,16 @@ import Translation from '../../models/translation'
 const route = async (req, res, trx) => {
 
   const translation = await Translation.where({
-    // language_id: req.params.language_id,
+    language_id: req.params.language_id,
     id: req.params.id
-  }).fetchAll()
+  }).fetch({
+    withRelated: ['label','language','user'],
+    transacting: req.trx
+  })
 
 
   res.status(200).json({
-    data: (translation)
+    data: TranslationSerializer(translation)
   })
 
 }

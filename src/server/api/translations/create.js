@@ -12,6 +12,10 @@ const route = async (req, res, trx) => {
     transacting: req.trx
   })
 
+  await translation.load(['label','language','user'], {
+    transacting: req.trx
+  })
+
   res.status(200).json({
     data: TranslationSerializer(translation)
   })

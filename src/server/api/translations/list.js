@@ -6,7 +6,8 @@ const route = async (req, res, trx) => {
   const translations = await Translation.where({
     language_id: req.params.language_id
   }).fetchAll({
-    withRelated: ['label','language','user']
+    withRelated: ['label','language','user'],
+    transacting: req.trx
   })
 
   res.status(200).json({

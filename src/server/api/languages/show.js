@@ -1,19 +1,18 @@
 import LanguageSerializer from '../../serializers/language_serializer'
-import UserSerializer from '../../serializers/user_serializer'
 import Language from '../../models/language'
-import User from '../../models/user'
 
 const route = async (req, res, trx) => {
 
-  const language = await Language.where({
-    id: req.params.id
-  }).fetchAll({
-    withRelated: ['users']
+  const language = await Language.query(qb => {
+    qb.innerJoin('users_languages', 'users_languages.language_id', 'languages.id')
+    qb.where('users_languages.user_id', req.user.get('id'))
+    qb.where('languages.id', req.params.id)
+  }).fetch({
+    transacting: req.trx
   })
 
-
   res.status(200).json({
-    data: language
+    data: LanguageSerializer(language)
   })
 
 
