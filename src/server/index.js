@@ -3,6 +3,7 @@ import 'express-async-errors'
 import withTransaction from './utils/transaction'
 import multiparty from 'connect-multiparty'
 import bodyParser from 'body-parser'
+import logger from './utils/logger'
 import express from 'express'
 import qs from 'qs'
 import api from './api'
@@ -18,6 +19,10 @@ server.use(bodyParser.json({ limit: '5mb' }))
 server.use(multiparty({ uploadDir: './tmp' }))
 
 server.use(withTransaction)
+
+server.use(logger)
+
+server.use('/api', api)
 
 server.use('/api', api)
 
