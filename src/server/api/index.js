@@ -1,17 +1,20 @@
-import { Router } from 'express'
+import notFound from './default/not_found'
+import translations from './translations'
+import error from './default/error'
 import languages from './languages'
+import { Router } from 'express'
 import labels from './labels'
 import signin from './signin'
-import translations from './translations'
+import users from './users'
 import token from './token'
-import notFound from './default/not_found'
-import error from './default/error'
 
 const router = new Router({ mergeParams: true })
 
 router.use('/signin', signin)
 
 router.use(token)
+
+router.use('/users', users)
 
 router.use('/languages', languages)
 
