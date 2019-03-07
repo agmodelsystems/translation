@@ -3,8 +3,8 @@ import Translation from '../../models/translation'
 
 const route = async (req, res, trx) => {
 
-  const translation = await Translation.where({
-    id: req.params.id
+  const translation = await Translation.query(qb => {
+    qb.where('id', req.params.id)
   }).fetch({
     transacting: req.trx
   })

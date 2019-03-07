@@ -55,7 +55,14 @@ const test = async () => {
     await knex.migrate.rollback()
   })
 
-  await new Promise((resolve, reject) => mocha.run(resolve))
+  await new Promise((resolve, reject) => {
+
+    mocha.run((failures) => {
+      process.exitCode = failures > 0 ? 1 : 0
+      resolve()
+    })
+
+  })
 
 }
 

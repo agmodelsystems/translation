@@ -3,17 +3,27 @@ import User from '../../models/user'
 
 const route = async (req, res, trx) => {
 
-  if(!req.body.username) throw new Error('username is required')
+  if(!req.body.username) return res.status(422).json({
+    message: 'Username is required'
+  })
 
-  const user = await User.where({
-    username: req.body.username
-  }).fetch()
+  const user = await User.query(qb => {
+    qb.where('username', req.body.username)
+  }).fetch({
+    transacting: req.trx
+  })
 
-  if(!user) throw new Error('unable to find user')
+  if(!user) return res.status(404).json({
+    message: 'Could not find user'
+  })
 
-  if(!req.body.password) throw new Error('password is required')
+  if(!req.body.password) return res.status(422).json({
+    message: 'Password is required'
+  })
 
-  if(!user.authenticate(req.body.password)) throw new Error('invalid password')
+  if(!user.authenticate(req.body.password)) return res.status(422).json({
+    message: 'Password is not valid'
+  })
 
   const token = encode(user.get('id'))
 
@@ -22,7 +32,6 @@ const route = async (req, res, trx) => {
       token
     }
   })
-
 
 }
 

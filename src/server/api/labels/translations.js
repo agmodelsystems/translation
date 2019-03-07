@@ -3,8 +3,8 @@ import TranslationSerializer from '../../serializers/translation_serializer'
 
 const route = async (req, res, trx) => {
 
-  const translations = await Translation.where({
-    label_id: req.params.label_id
+  const translations = await Translation.query(qb => {
+    qb.where('label_id', req.params.label_id)
   }).fetchAll({
     withRelated: ['label','language','user']
   })

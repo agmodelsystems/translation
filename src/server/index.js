@@ -4,9 +4,10 @@ import withTransaction from './utils/transaction'
 import multiparty from 'connect-multiparty'
 import bodyParser from 'body-parser'
 import logger from './utils/logger'
+import ping from './utils/ping'
 import express from 'express'
-import qs from 'qs'
 import api from './api'
+import qs from 'qs'
 
 const server = express()
 
@@ -18,11 +19,11 @@ server.use(bodyParser.json({ limit: '5mb' }))
 
 server.use(multiparty({ uploadDir: './tmp' }))
 
-server.use('/ping', (req, res) => res.status(200).send('pong'))
-
 server.use(withTransaction)
 
-server.use(logger)
+if(process.env.NODE_ENV !== 'production') server.use(logger)
+
+server.use('/ping', ping)
 
 server.use('/api', api)
 
