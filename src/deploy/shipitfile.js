@@ -57,7 +57,13 @@ module.exports = shipit => {
   })
 
   utils.registerTask(shipit, 'deploy:link', () => {
-    return shipit.remote(`cd ${shipit.releasePath} && ln -s ${sharedDir}/tmp && ln -s ${sharedDir}/.env && ln -s ${sharedDir}/knexfile.js`)
+    return shipit.remote([
+      `cd ${shipit.releasePath}`,
+      `rm -rf ${shipit.releasePath}/tmp && ln -s ${sharedDir}/tmp`,
+      `rm -rf ${shipit.releasePath}/logs && ln -s ${sharedDir}/logs`,
+      `rm -rf ${shipit.releasePath}/.env && ln -s ${sharedDir}/.env`,
+      `rm -rf ${shipit.releasePath}/knexfile.js && ln -s ${sharedDir}/knexfile.js`
+    ].join(' && '))
   })
 
   utils.registerTask(shipit, 'deploy:reload_appserver', () => {
