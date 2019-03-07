@@ -18,11 +18,11 @@ server.use(bodyParser.json({ limit: '5mb' }))
 
 server.use(multiparty({ uploadDir: './tmp' }))
 
+server.use('/ping', (req, res) => res.status(200).send('pong'))
+
 server.use(withTransaction)
 
 server.use(logger)
-
-server.use('/api', api)
 
 server.use('/api', api)
 
