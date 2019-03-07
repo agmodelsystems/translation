@@ -9,8 +9,7 @@ module.exports = shipit => {
     default: {
       deployTo: '/var/www/amts/translation',
       repositoryUrl: 'https://github.com/agmodelsystems/translation.git',
-      key: '~/.ssh/gkops',
-      // key: '~/.ssh/id_rsa_cf11711668bd284698b636afe4de739e',
+      key: '~/.ssh/id_rsa_cf11711668bd284698b636afe4de739e',
       workspace: path.resolve('repo'),
       ignores: ['.git', 'node_modules'],
       keepReleases: 2,
@@ -32,7 +31,7 @@ module.exports = shipit => {
   utils.registerTask(shipit, 'deploy:prepare', [
     'deploy:install_modules',
     'deploy:build',
-    'deploy:tmp'
+    'deploy:link'
   ])
 
   utils.registerTask(shipit, 'deploy:release', [
@@ -57,8 +56,8 @@ module.exports = shipit => {
     return shipit.remote(`cd ${shipit.releasePath} && NODE_ENV=production npm run build && chown -R nobody.nobody dist`)
   })
 
-  utils.registerTask(shipit, 'deploy:tmp', () => {
-    return shipit.remote(`cd ${shipit.releasePath} && ln -s ${sharedDir}/tmp`)
+  utils.registerTask(shipit, 'deploy:link', () => {
+    return shipit.remote(`cd ${shipit.releasePath} && ln -s ${sharedDir}/tmp && ln -s ${sharedDir}/.env && ln -s ${sharedDir}/knexfile.js`)
   })
 
   utils.registerTask(shipit, 'deploy:reload_appserver', () => {
