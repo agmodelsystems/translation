@@ -2,7 +2,7 @@ import { encode } from '../../lib/jwt'
 import User from '../../models/user'
 
 const route = async (req, res, trx) => {
-
+  
   if(!req.body.username) return res.status(422).json({
     message: 'Username is required'
   })

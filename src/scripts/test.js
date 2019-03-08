@@ -2,11 +2,15 @@ import dotenv from 'dotenv'
 import Mocha from 'mocha'
 import glob from 'glob'
 import Knex from 'knex'
+import path from 'path'
 import fs from 'fs'
 
-if(fs.existsSync('.env.test')) dotenv.load({
-  path: '.env.test'
-})
+if(!fs.existsSync(path.join('.env.test'))) {
+  console.log('Could not find .env.test!')
+  process.exit()
+}
+
+dotenv.load({ path: path.join('.env.test') })
 
 const knex = Knex({
   client: 'pg',

@@ -25,6 +25,26 @@ exports.seed = async (knex, Promise) => {
       created_at: moment(),
       updated_at: moment()
     },
+    {
+      first_name: 'Alex',
+      last_name: 'Converse',
+      email: 'alexconverse3@gmail.com',
+      username: 'alex',
+      password_salt: '$2a$10$TaGBczo2HaQDe1Q4ZwFFbO',
+      password_hash: '$2a$10$TaGBczo2HaQDe1Q4ZwFFbO2YGhQJ.nqv7fLT7mNFuw2YDEMH3/uPa',
+      created_at: moment(),
+      updated_at: moment()
+    },
+    {
+      first_name: 'Caroline',
+      last_name: 'Rasmussen',
+      email: 'caroline@agmodelsystems.com',
+      username: 'caroline',
+      password_salt: '$2a$10$TaGBczo2HaQDe1Q4ZwFFbO',
+      password_hash: '$2a$10$TaGBczo2HaQDe1Q4ZwFFbO2YGhQJ.nqv7fLT7mNFuw2YDEMH3/uPa',
+      created_at: moment(),
+      updated_at: moment()
+    }
   ])
 
 }
