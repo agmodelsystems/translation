@@ -8,6 +8,7 @@ exports.seed = async (knex, Promise) => {
     {
       name: 'Hello',
       description: 'Greeting',
+      english: 'Hello',
       created_at: moment(),
       updated_at: moment()
     },

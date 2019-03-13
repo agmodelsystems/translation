@@ -3,6 +3,7 @@ exports.up = function(knex, Promise) {
     table.increments('id').unsigned().primary()
     table.string('name')
     table.text('description')
+    table.text('english')
     table.timestamps()
   })
 }
