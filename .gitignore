@@ -12,6 +12,8 @@ config.json
 dist
 docs/files/deploy
 docs/files/github
+docs/files/*.key
+docs/files/*.crt
 src/public/tmp
 src/public/assets
 repo

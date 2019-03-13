@@ -27,7 +27,6 @@ const router = async (req, res, next) => {
     id: user_id
   }).fetch({
     transacting: req.trx
-    // withRelated: ['photo']
   })
 
   if(!user) return res.status(401).json({

@@ -11,6 +11,9 @@ const route = async (req, res, trx) => {
     transacting: req.trx
   })
 
+  if(!translation) return res.status(404).json({
+    message: 'Could not find translation'
+  })
 
   res.status(200).json({
     data: TranslationSerializer(translation)
