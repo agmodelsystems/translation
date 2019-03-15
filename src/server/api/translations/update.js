@@ -11,7 +11,8 @@ const route = async (req, res, trx) => {
 
   await translation.save({
     user_id: req.user.get('id'),
-    text: req.body.text
+    text: req.body.text,
+    is_hightlighted: req.body.is_hightlighted
   }, {
     patch: true,
     transacting: req.trx
