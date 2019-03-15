@@ -10,7 +10,7 @@ const Translation = new Model({
   rules: {
     label_id: 'required',
     language_id: 'required',
-    text: 'required',
+    //text: 'required',
     user_id: 'required'
   },
 
