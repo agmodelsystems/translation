@@ -15,7 +15,7 @@ const serializer = (result) => ({
     full_name: result.related('language').get('code'),
     full_name: result.related('language').get('name')
   },
-  // is_hightlighted: result.get('is_hightlighted'),
+   is_hightlighted: result.get('is_hightlighted'),
   text: result.get('text')
 })
 
