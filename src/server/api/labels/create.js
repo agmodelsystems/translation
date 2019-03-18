@@ -5,7 +5,8 @@ const route = async (req, res, trx) => {
 
   const label = await Label.forge({
     name: req.body.name,
-    description: req.body.description
+    description: req.body.description,
+    english: req.body.english
   }).save(null, {
     transacting: req.trx
   })
