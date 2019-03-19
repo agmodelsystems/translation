@@ -10,6 +10,10 @@ const route = async (req, res, trx) => {
     transacting: req.trx
   })
 
+  if(!user) return res.status(404).json({
+    message: 'Could not find user'
+  })
+
   const params = _.pickBy({
     first_name: req.body.first_name,
     last_name: req.body.last_name,

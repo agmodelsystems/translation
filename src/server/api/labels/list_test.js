@@ -13,6 +13,7 @@ describe('api/labels/list', () => {
     expect(res.json().data[0]).to.be.eql({
       id: 1,
       name: 'Hello',
+      english: 'Hello',
       description: 'Greeting'
     })
 

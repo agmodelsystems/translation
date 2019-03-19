@@ -33,6 +33,7 @@ describe('api/labels/show', () => {
     expect(res.json().data).to.be.eql({
       id: 1,
       name: 'Hello',
+      english: 'Hello',
       description: 'Greeting'
     })
 

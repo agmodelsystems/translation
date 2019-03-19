@@ -1,7 +1,8 @@
 import User from '../../models/user'
 import Language from '../../models/language'
-import UserSerializer from '../../serializers/language_serializer'
+import UserSerializer from '../../serializers/user_serializer'
 import LanguageSerializer from '../../serializers/language_serializer'
+import knex from '../../lib/knex'
 
 const route = async (req, res, trx) => {
 
@@ -14,7 +15,7 @@ const route = async (req, res, trx) => {
   })
 
   if(check) return res.status(404).json({
-    message: 'The relationship was already exist'
+    message: 'The relationship already exists'
   })
 
 /////////////////////////////////////////////////////////
@@ -28,22 +29,23 @@ const route = async (req, res, trx) => {
     message: 'Could not find user'
   })
 
+  await knex('users_languages').transacting(req.trx).insert({
+    user_id: req.body.user_id,
+    language_id: req.body.language_id
+  })
+
   const language = await Language.query(qb => {
     qb.where('id', req.body.language_id)
   }).fetch({
-    transacting: req.trx
-  }).tap(function (lg) {
-      lg.users().attach(user, {
-      transacting: req.trx
-    })
-  })
-
-  await language.load(['users'], {
-    transacting: req.trx
+    transacting: req.trx,
+    withRelated: ['users']
   })
 
   res.status(200).json({
-    data: `${language.get("name")} was successfully added to ${user.get("email")}`
+    data: {
+      ...LanguageSerializer(language),
+      users: language.related('users').map(UserSerializer)
+    }
   })
 
 }

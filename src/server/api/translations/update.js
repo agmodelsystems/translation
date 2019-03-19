@@ -9,6 +9,10 @@ const route = async (req, res, trx) => {
     transacting: req.trx
   })
 
+  if(!translation) return res.status(404).json({
+    message: 'Could not find translation'
+  })
+
   await translation.save({
     user_id: req.user.get('id'),
     text: req.body.text,
