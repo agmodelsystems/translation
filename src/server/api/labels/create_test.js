@@ -15,6 +15,18 @@ describe('api/labels/create', () => {
 
   })
 
+  it('rejects a duplicate label', async () => {
+
+    const body = {
+      name: 'Hello'
+    }
+
+    const res = await testHandler(create, { body })
+
+    expect(res.status()).to.be.equal(422)
+    expect(res.json().errors.name[0]).to.be.equal('The name is already in use')
+
+  })
 
   it('creates a label with valid data', async () => {
 

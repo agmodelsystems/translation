@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel-node ./src/scripts/build.js",
     "deploy": "shipit production deploy --shipitfile=./src/deploy/shipitfile.js",
-    "dev": "babel-node --inspect ./src/scripts/dev.js",
+    "dev": "babel-node ./src/scripts/dev.js",
     "reset": "knex migrate:rollback && knex migrate:latest && knex seed:run",
     "test": "babel-node ./src/scripts/test.js",
     "test2": "babel-node ./src/server/index.js"

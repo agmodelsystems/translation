@@ -6,7 +6,7 @@ const Label = new Model({
   tableName: 'labels',
 
   rules: {
-    name: 'required'
+    name: ['required','unique']
   },
 
   virtuals: {},
