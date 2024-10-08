@@ -3,6 +3,6 @@ import knex from './knex'
 
 const bookshelf = Bookshelf(knex)
 
-bookshelf.plugin('virtuals')
+bookshelf.plugin('bookshelf-virtuals-plugin')
 
 export default bookshelf

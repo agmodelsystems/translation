@@ -34,13 +34,15 @@
     "eslint": "^5.1.0",
     "mocha": "^5.2.0",
     "ncp": "^2.0.0",
+    "nodemon": "^3.1.7",
     "shipit-cli": "^4.1.2",
     "shipit-deploy": "^4.1.4"
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parse": "^0.1.0",
-    "bookshelf": "^0.14.2",
+    "bookshelf": "^1.2.0",
+    "bookshelf-virtuals-plugin": "^1.0.0",
     "chai": "^4.2.0",
     "checkit": "^0.7.0",
     "connect-multiparty": "^2.2.0",
