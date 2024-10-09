@@ -7,7 +7,7 @@ module.exports = shipit => {
 
   shipit.initConfig({
     default: {
-      deployTo: '/var/www/amts/translation',
+      deployTo: '/var/www/projects/translation',
       repositoryUrl: 'https://github.com/agmodelsystems/translation.git',
       key: '~/.ssh/id_rsa_cf11711668bd284698b636afe4de739e',
       workspace: path.resolve('repo'),
@@ -16,7 +16,7 @@ module.exports = shipit => {
       strict: 'no'
     },
     production: {
-      servers: 'root@api2.agmodelsystems.com'
+      servers: 'translation-api.agmodelsystems.com'
     }
   })
 
