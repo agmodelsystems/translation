@@ -17,8 +17,8 @@ jobs:
     executor: node-postgres
     steps:
       - run:
-        name: Clone repository over HTTTPS
-        command: git clone https://github.com/agmodelsystems/translation.git .
+          name: Clone repository over HTTTPS
+          command: git clone https://github.com/agmodelsystems/translation.git .
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
@@ -32,9 +32,9 @@ jobs:
   deploy:
     executor: node-postgres
     steps:
-    - run:
-        name: Clone repository over HTTTPS
-        command: git clone https://github.com/agmodelsystems/translation.git .
+      - run:
+          name: Clone repository over HTTTPS
+          command: git clone https://github.com/agmodelsystems/translation.git .
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
