@@ -49,19 +49,19 @@ rvm use --default 2.5.3
 gem update
 
 # INSTALL PASSENGER / NGINX
-yum install -y libcurl-devel
-gem install passenger --no-ri --no-rdoc
-passenger-install-nginx-module --auto --auto-download --languages nodejs
-mv /opt/nginx/conf/nginx.conf /opt/nginx/conf/nginx.conf.bak
-vi /opt/nginx/conf/nginx.conf
-vi /etc/init.d/nginx
-chmod 755 /etc/init.d/nginx
-chkconfig nginx on
-chkconfig --list nginx
-service nginx start
+# yum install -y libcurl-devel
+# gem install passenger --no-ri --no-rdoc
+# passenger-install-nginx-module --auto --auto-download --languages nodejs
+# mv /opt/nginx/conf/nginx.conf /opt/nginx/conf/nginx.conf.bak
+# vi /opt/nginx/conf/nginx.conf
+# vi /etc/init.d/nginx
+# chmod 755 /etc/init.d/nginx
+# chkconfig nginx on
+# chkconfig --list nginx
+# service nginx start
 
 # SET UP DEPLOYMENT
-yum -y install git
-vi ~/.ssh/github
-chmod 600 ~/.ssh/github
-vi ~/.ssh/config
+# yum -y install git
+# vi ~/.ssh/github
+# chmod 600 ~/.ssh/github
+# vi ~/.ssh/config
