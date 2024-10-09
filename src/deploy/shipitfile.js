@@ -9,7 +9,6 @@ module.exports = shipit => {
     default: {
       deployTo: '/var/www/projects/translation',
       repositoryUrl: 'https://github.com/agmodelsystems/translation.git',
-      key: '~/.ssh/id_rsa_cf11711668bd284698b636afe4de739e',
       workspace: path.resolve('repo'),
       ignores: ['.git', 'node_modules'],
       keepReleases: 2,
