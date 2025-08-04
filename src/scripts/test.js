@@ -18,7 +18,15 @@ if(!process.env.DATABASE_URL) {
 
 const knex = Knex({
   client: 'pg',
-  connection: process.env.DATABASE_URL,
+  connection: {
+    connectionString: process.env.DATABASE_URL,
+    ssl:{
+      require: true,
+      rejectUnauthorized: false
+    }
+
+  },
+    
   migrations: {
     tableName: 'knex_migrations',
     directory: './src/server/db/migrations'
